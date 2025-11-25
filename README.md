@@ -12,9 +12,21 @@ python -m pip install funsize-engineer && python -m funsize_engineer
 
 ## Installation
 
+### From PyPI (Production)
+
 ```bash
 pip install funsize-engineer
 ```
+
+### From TestPyPI (Testing)
+
+If you want to test the latest development version from TestPyPI:
+
+```bash
+pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple/ funsize-engineer
+```
+
+> **Note:** The `--extra-index-url` flag is required to ensure dependencies (like `rich`) are installed from the main PyPI, as they may not be available on TestPyPI.
 
 ## Usage
 
