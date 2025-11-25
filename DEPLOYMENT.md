@@ -1,6 +1,6 @@
-# GitHub Actions Deployment Setup
+# GitHub Actions Deployment Setup (Trusted Publishers)
 
-This repository uses GitHub Actions to automatically publish to PyPI.
+This repository uses GitHub Actions with PyPI Trusted Publishers for secure, token-free deployment.
 
 ## Workflow
 
@@ -9,37 +9,33 @@ This repository uses GitHub Actions to automatically publish to PyPI.
 
 ## Setup Instructions
 
-### 1. Create API Tokens
+### 1. Configure Trusted Publisher on PyPI
 
-**TestPyPI Token:**
-1. Go to https://test.pypi.org/manage/account/#api-tokens
-2. Create a new API token named `funsize-engineer-github`
-3. Scope: "Entire account" (for first upload)
-4. Copy the token (starts with `pypi-`)
+**For Production PyPI:**
+1. Go to https://pypi.org/manage/account/publishing/
+2. Click "Add a new pending publisher"
+3. Fill in the form:
+   - **PyPI Project Name:** `funsize-engineer`
+   - **Owner:** `JessicaRudd`
+   - **Repository name:** `funsize-engineer`
+   - **Workflow name:** `publish.yml`
+   - **Environment name:** (leave blank)
+4. Click "Add"
 
-**PyPI Token:**
-1. Go to https://pypi.org/manage/account/#api-tokens
-2. Create a new API token named `funsize-engineer-github`
-3. Scope: "Entire account" (for first upload)
-4. Copy the token (starts with `pypi-`)
+**For TestPyPI:**
+1. Go to https://test.pypi.org/manage/account/publishing/
+2. Click "Add a new pending publisher"
+3. Fill in the same information as above
+4. Click "Add"
 
-### 2. Add Secrets to GitHub
-
-1. Go to your repository: https://github.com/JessicaRudd/funsize-engineer
-2. Click **Settings** → **Secrets and variables** → **Actions**
-3. Click **New repository secret**
-4. Add two secrets:
-   - Name: `TEST_PYPI_API_TOKEN`, Value: `pypi-...` (your TestPyPI token)
-   - Name: `PYPI_API_TOKEN`, Value: `pypi-...` (your PyPI token)
-
-### 3. Create Develop Branch
+### 2. Create Develop Branch
 
 ```bash
 git checkout -b develop
 git push -u origin develop
 ```
 
-### 4. Deployment Process
+### 3. Deployment Process
 
 **To deploy to TestPyPI:**
 ```bash
@@ -59,6 +55,14 @@ git push origin main
 
 Or create a Pull Request from `develop` to `main` and merge it.
 
+## How Trusted Publishers Work
+
+- **No API tokens needed!** 🎉
+- GitHub Actions authenticates using OpenID Connect (OIDC)
+- More secure than static API tokens
+- Automatically rotates credentials
+- PyPI verifies the workflow is running from your authorized repository
+
 ## Testing the Package
 
 **From TestPyPI:**
@@ -74,6 +78,7 @@ pip install funsize-engineer
 ## Notes
 
 - The workflow automatically builds and uploads the package
-- No need to manually run `python setup.py sdist` or `twine upload`
+- No secrets or tokens to manage in GitHub
 - Each push to `develop` or `main` triggers a deployment
 - Make sure to update the version in `setup.py` before each release
+- The first deployment will create the project on PyPI/TestPyPI automatically
