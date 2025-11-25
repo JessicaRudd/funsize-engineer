@@ -36,5 +36,4 @@ funsize_engineer = ["assets/*.txt"]
 
 [tool.setuptools_scm]
 version_file = "funsize_engineer/_version.py"
-version_scheme = "guess-next-dev"
 local_scheme = "no-local-version"
