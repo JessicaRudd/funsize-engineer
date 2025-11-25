@@ -1,8 +1,15 @@
+.gitignore
+.python-version
+DEPLOYMENT.md
 MANIFEST.in
 README.md
-setup.py
+generate_ascii.py
+pyproject.toml
+requirements.txt
+.github/workflows/publish.yml
 funsize_engineer/__init__.py
 funsize_engineer/__main__.py
+funsize_engineer/_version.py
 funsize_engineer/card.py
 funsize_engineer.egg-info/PKG-INFO
 funsize_engineer.egg-info/SOURCES.txt
