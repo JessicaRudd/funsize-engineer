@@ -28,12 +28,31 @@ jobs:
     - name: Build package
       run: python -m build
     
-    - name: Publish to TestPyPI (develop branch)
-      if: github.ref == 'refs/heads/develop'
-      uses: pypa/gh-action-pypi-publish@release/v1
+    - name: Upload build artifacts
+      uses: actions/upload-artifact@v4
       with:
-        repository-url: https://test.pypi.org/legacy/
+        name: python-package-distributions
+        path: dist/
     
-    - name: Publish to PyPI (main branch)
-      if: github.ref == 'refs/heads/main'
-      uses: pypa/gh-action-pypi-publish@release/v1
+  pypi-publish:
+    name: upload release to TestPyPI
+    runs-on: ubuntu-latest
+    needs: build
+    # Specifying a GitHub environment is optional, but strongly encouraged
+    environment: pypi
+    permissions:
+      # IMPORTANT: this permission is mandatory for Trusted Publishing
+      id-token: write
+    steps:
+      - name: Download build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: python-package-distributions
+          path: dist/
+      
+      - name: Publish package distributions to PyPI
+        if: github.ref == 'refs/heads/develop'
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          repository-url: https://test.pypi.org/legacy/
+
