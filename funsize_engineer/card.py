@@ -18,21 +18,14 @@ def main():
     except FileNotFoundError:
         ascii_art = "Image not found."
 
-    # Process ASCII Art (strip common indentation)
+    # Process ASCII Art (strip empty lines from top/bottom only)
     lines = ascii_art.split('\n')
     while lines and not lines[0].strip():
         lines.pop(0)
     while lines and not lines[-1].strip():
         lines.pop()
-        
-    if lines:
-        min_indent = 1000
-        for line in lines:
-            if line.strip():
-                indent = len(line) - len(line.lstrip())
-                min_indent = min(min_indent, indent)
-        if min_indent < 1000:
-            ascii_art = '\n'.join(line[min_indent:] for line in lines)
+    
+    ascii_art = '\n'.join(lines)
     
     # Define Colors
     FD_BLUE = "#1493FF"
@@ -43,7 +36,7 @@ def main():
     LINK_COLOR = "underline blue"
 
     # 1. ASCII Art
-    art_text = Text(ascii_art, style="bold cyan")
+    art_text = Text(ascii_art, style="bold cyan", no_wrap=True, overflow='ignore')
     art_panel = Align.center(art_text)
 
     # 2. Name Banner (ASCII-like text using simple characters or just large bold text)
@@ -71,9 +64,9 @@ def main():
     content.add_column(justify="center")
     
     content.add_row(art_panel)
-    content.add_row(Text("─" * 40, style="dim")) # Separator
+    content.add_row(Text("─" * 100, style="dim")) # Separator
     content.add_row(name_text)
-    content.add_row(Text("─" * 40, style="dim")) # Separator
+    content.add_row(Text("─" * 100, style="dim")) # Separator
     content.add_row(grid)
 
     # Main Panel
@@ -82,7 +75,7 @@ def main():
             content,
             border_style=BORDER_COLOR,
             padding=(1, 2),
-            width=90, # Vertical layout needs less width
+            width=108, # Width set to accommodate 100-char ASCII art + padding
             box=ROUNDED
         )
     )
