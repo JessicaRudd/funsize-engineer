@@ -50,3 +50,29 @@ To run the card without installing it globally (similar to `npx`), you can use `
 ```bash
 pipx run funsize-engineer
 ```
+
+## Development & Versioning
+
+This package uses **automated versioning** with [setuptools-scm](https://github.com/pypa/setuptools-scm) based on git tags.
+
+### Version Format
+
+- **Production (main branch)**: Clean versions from git tags (e.g., `v0.2.0` → `0.2.0`)
+- **Development (develop branch)**: Auto-generated dev versions (e.g., `0.1.2.dev3+g1a2b3c4`)
+
+### Creating a Release
+
+1. Merge your changes to the `main` branch
+2. Create and push a git tag:
+   ```bash
+   git tag v0.2.0
+   git push origin v0.2.0
+   ```
+3. GitHub Actions will automatically build and publish to PyPI
+
+### Development Workflow
+
+- Push to `develop` branch → Auto-publishes to TestPyPI with dev version
+- Push to `main` branch with a tag → Auto-publishes to PyPI with stable version
+
+No manual version bumping required! 🎉
