@@ -1,0 +1,13 @@
+MANIFEST.in
+README.md
+setup.py
+funsize_engineer/__init__.py
+funsize_engineer/__main__.py
+funsize_engineer/card.py
+funsize_engineer.egg-info/PKG-INFO
+funsize_engineer.egg-info/SOURCES.txt
+funsize_engineer.egg-info/dependency_links.txt
+funsize_engineer.egg-info/entry_points.txt
+funsize_engineer.egg-info/requires.txt
+funsize_engineer.egg-info/top_level.txt
+funsize_engineer/assets/ascii-art.txt

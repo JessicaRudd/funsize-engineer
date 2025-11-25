@@ -1,0 +1,57 @@
+Metadata-Version: 2.1
+Name: funsize-engineer
+Version: 0.1.0
+Summary: A personal calling card for Jessica Rudd
+Home-page: https://github.com/JessicaRudd/funsize-engineer
+Author: Jessica Rudd
+Author-email: jessica.rudd@fanduel.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+
+# funsize-engineer
+
+A personal calling card for Jessica Rudd, Staff Data Engineer at FanDuel.
+
+## Quick Start
+
+Run this single command in your terminal (requires Python installed):
+
+```bash
+python -m pip install funsize-engineer && python -m funsize_engineer
+```
+
+## Installation
+
+```bash
+pip install funsize-engineer
+```
+
+## Usage
+
+Run the command:
+
+```bash
+funsize-engineer
+```
+
+Or import it in Python:
+
+```python
+import funsize_engineer
+funsize_engineer.card()
+```
+
+## "npx-style" Usage
+
+To run the card without installing it globally (similar to `npx`), you can use `pipx`:
+
+```bash
+pipx run funsize-engineer
+```
+
+
