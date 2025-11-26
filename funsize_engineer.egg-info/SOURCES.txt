@@ -3,9 +3,7 @@
 DEPLOYMENT.md
 MANIFEST.in
 README.md
-generate_ascii.py
 pyproject.toml
-requirements.txt
 .github/workflows/publish.yml
 funsize_engineer/__init__.py
 funsize_engineer/__main__.py
@@ -17,4 +15,6 @@ funsize_engineer.egg-info/dependency_links.txt
 funsize_engineer.egg-info/entry_points.txt
 funsize_engineer.egg-info/requires.txt
 funsize_engineer.egg-info/top_level.txt
+funsize_engineer/__pycache__/__init__.cpython-310.pyc
+funsize_engineer/__pycache__/card.cpython-310.pyc
 funsize_engineer/assets/ascii-art.txt

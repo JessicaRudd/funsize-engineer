@@ -80,5 +80,5 @@ pip install funsize-engineer
 - The workflow automatically builds and uploads the package
 - No secrets or tokens to manage in GitHub
 - Each push to `develop` or `main` triggers a deployment
-- Make sure to update the version in `setup.py` before each release
+
 - The first deployment will create the project on PyPI/TestPyPI automatically
