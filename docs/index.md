@@ -9,7 +9,7 @@ title: "Building funsize-engineer: A Case Study in Agent-First Development"
 
 ## I. Introduction
 
-In the modern software landscape, the barrier between an idea and a deployable artifact is often the friction of boilerplate and configuration. This post documents the creation of **`funsize-engineer`**, a Python package designed to serve as a terminal-based "business card" for Jessica Rudd, Staff Data Engineer at FanDuel.
+In the modern software landscape, the barrier between an idea and a deployable artifact is often the friction of boilerplate and configuration. This post documents the creation of **`funsize-engineer`**, a Python package designed to serve as my terminal-based "business card".
 
 The goal was simple: create a distributable Python package that, when run, displays professional contact information and ASCII art in a visually appealing format. However, the *method* of creation was novel. Instead of writing every line of code manually, we utilized **Google Antigravity**, an agentic coding platform. This article demonstrates how the "Agent-First" development paradigm shifts the engineer's role from typist to architect, focusing on task orchestration and verification rather than syntax.
 
