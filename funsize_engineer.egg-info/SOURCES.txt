@@ -1,10 +1,15 @@
 .gitignore
 .python-version
-DEPLOYMENT.md
+BLOG_POST_DRAFT.md
 MANIFEST.in
 README.md
 pyproject.toml
+.github/workflows/pages.yml
 .github/workflows/publish.yml
+docs/_config.yml
+docs/index.md
+docs/_layouts/default.html
+docs/assets/funsize_engineer_card.png
 funsize_engineer/__init__.py
 funsize_engineer/__main__.py
 funsize_engineer/_version.py
@@ -18,3 +23,4 @@ funsize_engineer.egg-info/top_level.txt
 funsize_engineer/__pycache__/__init__.cpython-310.pyc
 funsize_engineer/__pycache__/card.cpython-310.pyc
 funsize_engineer/assets/ascii-art.txt
+funsize_engineer/assets/calling_card_output.png
