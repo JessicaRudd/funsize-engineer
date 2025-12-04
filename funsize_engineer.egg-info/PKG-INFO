@@ -1,6 +1,6 @@
 Metadata-Version: 2.4
 Name: funsize-engineer
-Version: 0.2.3.dev0
+Version: 0.2.12.dev2
 Summary: A personal calling card for Jessica Rudd
 Author-email: Jessica Rudd <jessica.rudd@fanduel.com>
 License: MIT
@@ -17,12 +17,20 @@ Requires-Dist: rich
 
 A personal calling card for Jessica Rudd, Staff Data Engineer at FanDuel.
 
+**Read the story:** [Building funsize-engineer: A Case Study in Agent-First Development](https://jessicarudd.github.io/funsize-engineer/)
+
 ## Quick Start
 
 Run this single command in your terminal (requires Python installed):
 
 ```bash
-python -m pip install funsize-engineer && python -m funsize_engineer
+pipx run funsize-engineer
+```
+
+Or install and run:
+
+```bash
+pip install funsize-engineer && funsize-engineer
 ```
 
 ## Installation
@@ -32,16 +40,6 @@ python -m pip install funsize-engineer && python -m funsize_engineer
 ```bash
 pip install funsize-engineer
 ```
-
-### From TestPyPI (Testing)
-
-If you want to test the latest development version from TestPyPI:
-
-```bash
-pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple/ funsize-engineer
-```
-
-> **Note:** The `--extra-index-url` flag is required to ensure dependencies (like `rich`) are installed from the main PyPI, as they may not be available on TestPyPI.
 
 ## Usage
 
@@ -60,7 +58,7 @@ funsize_engineer.card()
 
 ## "npx-style" Usage
 
-To run the card without installing it globally (similar to `npx`), you can use `pipx`:
+To run the card without installing it globally (similar to `npx`), use `pipx`:
 
 ```bash
 pipx run funsize-engineer
@@ -68,26 +66,56 @@ pipx run funsize-engineer
 
 ## Development & Versioning
 
-This package uses **automated versioning** with [setuptools-scm](https://github.com/pypa/setuptools-scm) based on git tags.
+This package uses **automated versioning** with GitHub Actions and git tags.
+
+### How It Works
+
+- **Main branch**: Pushes to `main` automatically create a new patch version tag (e.g., `v0.2.10` → `v0.2.11`) and publish to PyPI
+- **Develop branch**: Pushes to `develop` build the package but do not publish (TestPyPI publishing is currently disabled)
 
 ### Version Format
 
-- **Production (main branch)**: Clean versions from git tags (e.g., `v0.2.0` → `0.2.0`)
-- **Development (develop branch)**: Auto-generated dev versions (e.g., `0.1.2.dev3+g1a2b3c4`)
+- **Production (main branch)**: Clean semantic versions (e.g., `0.2.11`)
+- **Development (develop branch)**: Dev versions (e.g., `0.2.12dev`)
 
 ### Creating a Release
 
-1. Merge your changes to the `main` branch
-2. Create and push a git tag:
-   ```bash
-   git tag v0.2.0
-   git push origin v0.2.0
-   ```
-3. GitHub Actions will automatically build and publish to PyPI
+1. Make your changes on the `develop` branch
+2. Create a pull request to `main`
+3. Merge the PR
+4. GitHub Actions will automatically:
+   - Bump the patch version (e.g., `v0.2.10` → `v0.2.11`)
+   - Create and push the new tag
+   - Build the package with the clean version
+   - Publish to PyPI
+   - Create a GitHub release
 
-### Development Workflow
+No manual version bumping or tagging required! 🎉
 
-- Push to `develop` branch → Auto-publishes to TestPyPI with dev version
-- Push to `main` branch with a tag → Auto-publishes to PyPI with stable version
+### Manual Version Control
 
-No manual version bumping required! 🎉
+If you need to bump major or minor versions, manually create and push a tag:
+
+```bash
+git tag v1.0.0
+git push origin v1.0.0
+```
+
+## Project Structure
+
+```
+funsize-engineer/
+├── funsize_engineer/       # Main package
+│   ├── __init__.py
+│   ├── card.py            # Core display logic
+│   └── assets/            # ASCII art and resources
+├── docs/                  # GitHub Pages blog post
+├── .github/workflows/     # CI/CD automation
+│   ├── publish.yml        # PyPI publishing
+│   └── pages.yml          # GitHub Pages deployment
+└── pyproject.toml         # Package configuration
+```
+
+## License
+
+MIT
