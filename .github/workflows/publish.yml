@@ -42,23 +42,31 @@ jobs:
         if git describe --exact-match --tags HEAD >/dev/null 2>&1; then
           EXISTING_TAG=$(git describe --exact-match --tags HEAD)
           echo "Commit is already tagged with $EXISTING_TAG. Skipping version bump."
+          # Strip 'v' prefix for version number
+          VERSION_NUMBER=${EXISTING_TAG#v}
           echo "NEW_TAG=$EXISTING_TAG" >> $GITHUB_ENV
+          echo "VERSION_NUMBER=$VERSION_NUMBER" >> $GITHUB_ENV
           exit 0
         fi
         
-        # Get the latest tag, default to 0.0.0 if none exists
-        LATEST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "0.0.0")
+        # Get the latest tag, default to v0.0.0 if none exists
+        LATEST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "v0.0.0")
         echo "Latest tag: $LATEST_TAG"
         
+        # Strip the 'v' prefix if present
+        VERSION_NUMBER=${LATEST_TAG#v}
+        echo "Version number: $VERSION_NUMBER"
+        
         # Split version into parts (assuming semantic versioning X.Y.Z)
-        IFS='.' read -r -a parts <<< "$LATEST_TAG"
+        IFS='.' read -r -a parts <<< "$VERSION_NUMBER"
         MAJOR=${parts[0]}
         MINOR=${parts[1]}
         PATCH=${parts[2]}
         
         # Increment PATCH version
         NEW_PATCH=$((PATCH + 1))
-        NEW_TAG="$MAJOR.$MINOR.$NEW_PATCH"
+        NEW_TAG="v$MAJOR.$MINOR.$NEW_PATCH"
+        VERSION_NUMBER="$MAJOR.$MINOR.$NEW_PATCH"
         
         echo "Bumping version to $NEW_TAG"
         
@@ -66,25 +74,30 @@ jobs:
         git tag $NEW_TAG
         git push origin $NEW_TAG
         
-        # Export the new tag for use in subsequent steps
+        # Export the new tag and version for use in subsequent steps
         echo "NEW_TAG=$NEW_TAG" >> $GITHUB_ENV
+        echo "VERSION_NUMBER=$VERSION_NUMBER" >> $GITHUB_ENV
     
-    - name: Checkout tag for clean version
+    - name: Set version for build
       if: github.ref == 'refs/heads/main'
-      uses: actions/checkout@v4
-      with:
-        ref: ${{ env.NEW_TAG }}
-        fetch-depth: 0
+      run: |
+        # Force setuptools-scm to use the exact version we want
+        echo "SETUPTOOLS_SCM_PRETEND_VERSION=${{ env.VERSION_NUMBER }}" >> $GITHUB_ENV
+        echo "Building version: ${{ env.VERSION_NUMBER }}"
     
     - name: Create dev version for develop branch
       if: github.ref == 'refs/heads/develop'
       run: |
         # Get the latest tag
-        LATEST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "0.0.0")
+        LATEST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "v0.0.0")
         echo "Latest tag: $LATEST_TAG"
         
+        # Strip the 'v' prefix if present
+        VERSION_NUMBER=${LATEST_TAG#v}
+        echo "Version number: $VERSION_NUMBER"
+        
         # Split version into parts
-        IFS='.' read -r -a parts <<< "$LATEST_TAG"
+        IFS='.' read -r -a parts <<< "$VERSION_NUMBER"
         MAJOR=${parts[0]}
         MINOR=${parts[1]}
         PATCH=${parts[2]}
