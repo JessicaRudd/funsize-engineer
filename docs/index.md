@@ -21,7 +21,8 @@ Two core components enable this workflow:
 
 1.  **The Manager View:** Unlike a standard chat interface, Antigravity maintains a structured "Manager View" of the project. It tracks high-level objectives, breaks them down into sub-tasks (e.g., "Scaffold Repository", "Implement Core Logic", "Configure CI/CD"), and maintains context across the entire development lifecycle. This allows the agent to "remember" architectural decisions made in step one while executing step ten.
 
-```mermaid
+
+<pre class="mermaid">
 graph TD
     A[Start Project] --> B{Manager View}
     B -->|Task 1| C[Scaffold Repository]
@@ -37,7 +38,8 @@ graph TD
     style G fill:#1e1e1e,stroke:#FF9900,stroke-width:1px,color:#fff
     style H fill:#1e1e1e,stroke:#FF9900,stroke-width:1px,color:#fff
     style I fill:#1e1e1e,stroke:#FF9900,stroke-width:1px,color:#fff
-```
+</pre>
+
 
 2.  **Artifact-Driven Workflow:** The agent does not just stream code into a void. It generates **Artifacts**—structured documents like Implementation Plans, Task Lists, and Code Diffs. These artifacts serve as checkpoints. The agent proposes a plan, the engineer reviews and approves it, and only then does the agent execute. This "Human-in-the-Loop" model ensures that autonomy does not come at the cost of control.
 
