@@ -51,10 +51,10 @@ def main():
     
     grid.add_row("Work:", "Staff Data Engineer")
     grid.add_row("", "Analytics Engineering Team @ FanDuel")
-    grid.add_row("GitHub:", Text("https://github.com/JessicaRudd", style=LINK_COLOR))
-    grid.add_row("Email:", Text("jessica.rudd@fanduel.com", style=LINK_COLOR))
-    grid.add_row("LinkedIn:", Text("https://www.linkedin.com/in/jmrudd/", style=LINK_COLOR))
-    grid.add_row("Substack:", Text("https://funsizedatabytes.substack.com/", style=LINK_COLOR))
+    grid.add_row("GitHub:", Text("https://github.com/JessicaRudd", style=f"{LINK_COLOR} link https://github.com/JessicaRudd"))
+    grid.add_row("Email:", Text("jessica.rudd@fanduel.com", style=f"{LINK_COLOR} link mailto:jessica.rudd@fanduel.com"))
+    grid.add_row("LinkedIn:", Text("https://www.linkedin.com/in/jmrudd/", style=f"{LINK_COLOR} link https://www.linkedin.com/in/jmrudd/"))
+    grid.add_row("Substack:", Text("https://funsizedatabytes.substack.com/", style=f"{LINK_COLOR} link https://funsizedatabytes.substack.com/"))
     
     grid.add_row() # Spacer
     grid.add_row("Card:", Text("pip install funsize-engineer", style=FD_ORANGE))
