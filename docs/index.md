@@ -1,9 +1,9 @@
 ---
 layout: default
-title: "Building funsize-engineer: A Case Study in Agent-First Development"
+title: "Building funsize-engineer"
 ---
 
-# Building `funsize-engineer`: A Case Study in Agent-First Development
+<!-- # Building `funsize-engineer`: A Case Study in Agent-First Development -->
 
 **By Dr. Jessica M. Rudd with assistance from Antigravity**
 
