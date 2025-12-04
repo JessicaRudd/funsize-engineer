@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Building funsize-engineer: A Case Study in Agent-First Development | funsize-engineer Blog</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Building funsize-engineer: A Case Study in Agent-First Development" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A case study in Agent-First Development with Google Antigravity" />
+<meta property="og:description" content="A case study in Agent-First Development with Google Antigravity" />
+<meta property="og:site_name" content="funsize-engineer Blog" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Building funsize-engineer: A Case Study in Agent-First Development" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebSite","description":"A case study in Agent-First Development with Google Antigravity","headline":"Building funsize-engineer: A Case Study in Agent-First Development","name":"funsize-engineer Blog","url":"/funsize-engineer/dev/"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style" type="text/css" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="stylesheet" href="/funsize-engineer/dev/assets/css/style.css?v=">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/funsize-engineer/dev/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <a id="skip-to-content" href="#content">Skip to the content.</a>
+
+    <header class="page-header" role="banner">
+      <h1 class="project-name">Building funsize-engineer: A Case Study in Agent-First Development</h1>
+      <h2 class="project-tagline">A case study in Agent-First Development with Google Antigravity</h2>
+      
+      
+    </header>
+
+    <main id="content" class="main-content" role="main">
+      <h1 id="building-funsize-engineer-a-case-study-in-agent-first-development">Building <code class="language-plaintext highlighter-rouge">funsize-engineer</code>: A Case Study in Agent-First Development</h1>
+
+<p><strong>By Jessica Rudd with assistance from Antigravity</strong></p>
+
+<h2 id="i-introduction">I. Introduction</h2>
+
+<p>In the modern software landscape, the barrier between an idea and a deployable artifact is often the friction of boilerplate and configuration. This post documents the creation of <strong><code class="language-plaintext highlighter-rouge">funsize-engineer</code></strong>, a Python package designed to serve as my terminal-based “business card”. Inspired by <a href="https://github.com/reverentgeek/reverentgeek-card">David Neal’s npm calling card</a>, I wanted to create a Python equivalent that could be easily distributed and run via PyPI.</p>
+
+<p>The goal was simple: create a distributable Python package that, when run, displays professional contact information and ASCII art in a visually appealing format. However, the <em>method</em> of creation was novel. Instead of writing every line of code manually, we utilized <strong>Google Antigravity</strong>, Google’s new agentic coding platform. This article demonstrates how the “Agent-First” development paradigm shifts the engineer’s role from typist to architect, focusing on task orchestration and verification rather than syntax.</p>
+
+<h2 id="ii-antigravity-core-functionality">II. Antigravity Core Functionality</h2>
+
+<p>Antigravity operates on a fundamental shift in the developer-tool relationship. It is not merely an autocomplete engine; it is an autonomous agent capable of executing complex, multi-step tasks.</p>
+
+<p>Two core components enable this workflow:</p>
+
+<ol>
+  <li><strong>The Manager View:</strong> Unlike a standard chat interface, Antigravity maintains a structured “Manager View” of the project. It tracks high-level objectives, breaks them down into sub-tasks (e.g., “Scaffold Repository”, “Implement Core Logic”, “Configure CI/CD”), and maintains context across the entire development lifecycle. This allows the agent to “remember” architectural decisions made in step one while executing step ten.</li>
+</ol>
+
+<pre><code class="language-mermaid">graph TD
+    A[Start Project] --&gt; B{Manager View}
+    B --&gt;|Task 1| C[Scaffold Repository]
+    B --&gt;|Task 2| D[Implement Core Logic]
+    B --&gt;|Task 3| E[Configure CI/CD]
+    B --&gt;|Task 4| F[Verify Publishing]
+    
+    C --&gt; G[Artifact: File Structure]
+    D --&gt; H[Artifact: card.py]
+    E --&gt; I[Artifact: publish.yml]
+    
+    style B fill:#2d2d2d,stroke:#1493FF,stroke-width:2px,color:#fff
+    style G fill:#1e1e1e,stroke:#FF9900,stroke-width:1px,color:#fff
+    style H fill:#1e1e1e,stroke:#FF9900,stroke-width:1px,color:#fff
+    style I fill:#1e1e1e,stroke:#FF9900,stroke-width:1px,color:#fff
+</code></pre>
+
+<ol>
+  <li><strong>Artifact-Driven Workflow:</strong> The agent does not just stream code into a void. It generates <strong>Artifacts</strong>—structured documents like Implementation Plans, Task Lists, and Code Diffs. These artifacts serve as checkpoints. The agent proposes a plan, the engineer reviews and approves it, and only then does the agent execute. This “Human-in-the-Loop” model ensures that autonomy does not come at the cost of control.</li>
+</ol>
+
+<h2 id="iii-the-package-creation-workflow">III. The Package Creation Workflow</h2>
+
+<p>The development of <code class="language-plaintext highlighter-rouge">funsize-engineer</code> followed a structured lifecycle, orchestrated by the agent.</p>
+
+<h3 id="phase-1-planning-and-scaffolding">Phase 1: Planning and Scaffolding</h3>
+<p>The project began with a high-level directive. The agent analyzed the requirements—a Python package, <code class="language-plaintext highlighter-rouge">rich</code> library for UI, and PyPI distribution—and generated an implementation plan. It then scaffolded the directory structure, creating <code class="language-plaintext highlighter-rouge">pyproject.toml</code> for modern standards-compliant packaging and setting up the initial git repository.</p>
+
+<h3 id="phase-2-core-logic-development">Phase 2: Core Logic Development</h3>
+<p>With the foundation in place, the agent implemented the core functionality in <code class="language-plaintext highlighter-rouge">funsize_engineer/card.py</code>. It utilized the <code class="language-plaintext highlighter-rouge">rich</code> library to create a grid layout, integrating ASCII art loaded from an asset file and styling the text with specific color tokens (e.g., <code class="language-plaintext highlighter-rouge">#1493FF</code> for branding).</p>
+
+<h3 id="phase-3-cicd-and-versioning">Phase 3: CI/CD and Versioning</h3>
+<p>The most complex phase involved automating the release process. The agent configured GitHub Actions workflows to handle dual publishing streams:</p>
+<ul>
+  <li><strong>TestPyPI:</strong> For development snapshots from the <code class="language-plaintext highlighter-rouge">develop</code> branch.</li>
+  <li><strong>PyPI:</strong> For stable releases from the <code class="language-plaintext highlighter-rouge">main</code> branch.</li>
+</ul>
+
+<h2 id="iv-agentic-artifact-review-validating-the-workflow">IV. Agentic Artifact Review: Validating the Workflow</h2>
+
+<p>A critical moment in the project was the configuration of the CI/CD pipeline. The agent proposed a GitHub Actions workflow to automate publishing.</p>
+
+<blockquote>
+  <p><strong>Initial Plan Artifact (Excerpt):</strong></p>
+
+  <ul>
+    <li><em>Task:</em> Configure GitHub Actions for PyPI publishing.</li>
+    <li><em>Action:</em> Create <code class="language-plaintext highlighter-rouge">.github/workflows/publish.yml</code>.</li>
+    <li><em>Developer Review:</em> Required.</li>
+  </ul>
+
+  <p><strong>Code Diff (Excerpt):</strong></p>
+
+  <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">+ name</span><span class="pi">:</span> <span class="s">Publish to PyPI</span>
+<span class="na">+ on</span><span class="pi">:</span>
+<span class="na">+   push</span><span class="pi">:</span>
+<span class="na">+     branches</span><span class="pi">:</span>
+<span class="s">+       - main</span>
+<span class="s">+       - develop</span>
+<span class="na">+ jobs</span><span class="pi">:</span>
+<span class="na">+   build</span><span class="pi">:</span>
+<span class="na">+     runs-on</span><span class="pi">:</span> <span class="s">ubuntu-latest</span>
+<span class="na">+     steps</span><span class="pi">:</span>
+<span class="na">+     - uses</span><span class="pi">:</span> <span class="s">actions/checkout@v4</span>
+<span class="na">+       with</span><span class="pi">:</span>
+<span class="na">+         fetch-depth</span><span class="pi">:</span> <span class="m">0</span>  <span class="c1"># Fetch all history for setuptools-scm</span>
+</code></pre></div>  </div>
+</blockquote>
+
+<p>This artifact allowed the developer to verify that the workflow was correctly targeting both branches and, crucially, that <code class="language-plaintext highlighter-rouge">fetch-depth: 0</code> was included to ensure <code class="language-plaintext highlighter-rouge">setuptools-scm</code> could correctly calculate versions from git tags.</p>
+
+<h2 id="v-troubleshooting-and-iteration">V. Troubleshooting and Iteration</h2>
+
+<p>No development process is without friction. During the setup of the automated versioning, we encountered an issue where releases from the <code class="language-plaintext highlighter-rouge">main</code> branch were being tagged with “dev” suffixes (e.g., <code class="language-plaintext highlighter-rouge">0.2.1.dev0</code>) instead of clean release versions, due to how <code class="language-plaintext highlighter-rouge">setuptools-scm</code> interprets the distance from the last tag.</p>
+
+<p><strong>The Issue:</strong>
+The <code class="language-plaintext highlighter-rouge">main</code> branch builds were not being recognized as clean releases, causing PyPI uploads to fail or be mislabeled.</p>
+
+<p><strong>The Prompt:</strong></p>
+<blockquote>
+  <p>“Fix the versioning so that main branch releases are clean versions like 0.2.0, not dev versions. Ensure the workflow automatically bumps the patch version if no tag is present.”</p>
+</blockquote>
+
+<p><strong>The Resolution:</strong>
+The agent diagnosed that relying solely on <code class="language-plaintext highlighter-rouge">setuptools-scm</code> inside the CI environment was insufficient for our specific auto-bumping requirement. It autonomously wrote a shell script within the YAML workflow to handle the logic:</p>
+
+<p><strong>Terminal Output / Code Change:</strong></p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Automated Version Bump Script generated by Agent</span>
+<span class="nv">LATEST_TAG</span><span class="o">=</span><span class="si">$(</span>git describe <span class="nt">--tags</span> <span class="nt">--abbrev</span><span class="o">=</span>0 2&gt;/dev/null <span class="o">||</span> <span class="nb">echo</span> <span class="s2">"0.0.0"</span><span class="si">)</span>
+<span class="c"># ... logic to parse and increment patch version ...</span>
+<span class="nv">NEW_PATCH</span><span class="o">=</span><span class="k">$((</span>PATCH <span class="o">+</span> <span class="m">1</span><span class="k">))</span>
+<span class="nv">NEW_TAG</span><span class="o">=</span><span class="s2">"</span><span class="nv">$MAJOR</span><span class="s2">.</span><span class="nv">$MINOR</span><span class="s2">.</span><span class="nv">$NEW_PATCH</span><span class="s2">"</span>
+git tag <span class="nv">$NEW_TAG</span>
+git push origin <span class="nv">$NEW_TAG</span>
+</code></pre></div></div>
+
+<p>This intervention solved the problem, ensuring that every merge to <code class="language-plaintext highlighter-rouge">main</code> results in a clean, predictable semantic version.</p>
+
+<h2 id="vi-final-code--output">VI. Final Code &amp; Output</h2>
+
+<p>The result is a lightweight, installable package. The core logic resides in <code class="language-plaintext highlighter-rouge">funsize_engineer/card.py</code>, which orchestrates the <code class="language-plaintext highlighter-rouge">rich</code> components.</p>
+
+<p><strong>Final Example Code:</strong></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># funsize_engineer/card.py
+</span><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">console</span> <span class="o">=</span> <span class="n">Console</span><span class="p">()</span>
+    <span class="c1"># ... loading assets ...
+</span>    
+    <span class="c1"># Assemble Content
+</span>    <span class="n">content</span> <span class="o">=</span> <span class="n">Table</span><span class="p">.</span><span class="n">grid</span><span class="p">(</span><span class="n">padding</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="n">content</span><span class="p">.</span><span class="n">add_column</span><span class="p">(</span><span class="n">justify</span><span class="o">=</span><span class="s">"center"</span><span class="p">)</span>
+    <span class="n">content</span><span class="p">.</span><span class="n">add_row</span><span class="p">(</span><span class="n">art_panel</span><span class="p">)</span>
+    <span class="n">content</span><span class="p">.</span><span class="n">add_row</span><span class="p">(</span><span class="n">Text</span><span class="p">(</span><span class="s">"─"</span> <span class="o">*</span> <span class="mi">100</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s">"dim"</span><span class="p">))</span>
+    <span class="n">content</span><span class="p">.</span><span class="n">add_row</span><span class="p">(</span><span class="n">name_text</span><span class="p">)</span>
+    
+    <span class="n">console</span><span class="p">.</span><span class="k">print</span><span class="p">(</span>
+        <span class="n">Panel</span><span class="p">(</span>
+            <span class="n">content</span><span class="p">,</span>
+            <span class="n">border_style</span><span class="o">=</span><span class="s">"#1493FF"</span><span class="p">,</span>
+            <span class="n">width</span><span class="o">=</span><span class="mi">108</span><span class="p">,</span>
+            <span class="n">box</span><span class="o">=</span><span class="n">ROUNDED</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+</code></pre></div></div>
+
+<p><strong>Example Output:</strong></p>
+
+<p>Running <code class="language-plaintext highlighter-rouge">pipx run funsize-engineer</code> now renders the following in the terminal:</p>
+
+<p><img src="/Users/jrudd/.gemini/antigravity/brain/1e593380-ffae-4e3f-aa3d-2bc5135dd9ac/funsize_engineer_card.png" alt="Terminal output showing the funsize-engineer calling card with ASCII art dinosaur and contact information" /></p>
+
+<h2 id="vii-conclusion">VII. Conclusion</h2>
+
+<p>The creation of <code class="language-plaintext highlighter-rouge">funsize-engineer</code> highlights the power of the <strong>Agent-First</strong> methodology. By offloading the implementation details—from directory scaffolding to complex CI/CD scripting—to Antigravity, we focused on the <em>what</em> and <em>why</em> of the product. The result is a professional-grade Python package built in a fraction of the time, with the agent acting not just as a coder, but as a partner in the engineering process.
+```</p>
+
+
+      <footer class="site-footer">
+        
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a>.</span>
+      </footer>
+    </main>
+
+    <!-- Mermaid.js for diagram rendering -->
+    <script type="module">
+      import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+      mermaid.initialize({ 
+        startOnLoad: true,
+        theme: 'dark'
+      });
+    </script>
+  </body>
+</html>
