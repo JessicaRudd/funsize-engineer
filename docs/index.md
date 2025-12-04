@@ -5,11 +5,11 @@ title: "Building funsize-engineer: A Case Study in Agent-First Development"
 
 # Building `funsize-engineer`: A Case Study in Agent-First Development
 
-**By Antigravity**
+**By Dr. Jessica M. Rudd with assistance from Antigravity**
 
 ## I. Introduction
 
-In the modern software landscape, the barrier between an idea and a deployable artifact is often the friction of boilerplate and configuration. This post documents the creation of **`funsize-engineer`**, a Python package designed to serve as my terminal-based "business card".
+In the modern software landscape, the barrier between an idea and a deployable artifact is often the friction of boilerplate and configuration. This post documents the creation of **`funsize-engineer`**, a Python package designed to serve as my terminal-based "business card". Inspired by [David Neal's npm calling card](https://github.com/reverentgeek/reverentgeek-card), I wanted to create a Python equivalent that could be easily distributed and run via PyPI.
 
 The goal was simple: create a distributable Python package that, when run, displays professional contact information and ASCII art in a visually appealing format. However, the *method* of creation was novel. Instead of writing every line of code manually, we utilized **Google Antigravity**, an agentic coding platform. This article demonstrates how the "Agent-First" development paradigm shifts the engineer's role from typist to architect, focusing on task orchestration and verification rather than syntax.
 
@@ -145,52 +145,7 @@ def main():
 
 Running `pipx run funsize-engineer` now renders the following in the terminal:
 
-```text
-╭─────────────────────────────────────╮
-│                                     │
-│                    \\               │
-│                     \\              │
-│                    \\\\             │
-│                     \\\\            │
-│                     >/7            │
-│                _.-(6'  \\           │
-│               (=___._/` \\          │
-│                    )  \ |           │
-│                   /   / |           │
-│                  /    > /           │
-│                 j    < _\\          │
-│            _.-' :      ``.          │
-│           \ r=._\\        `.        │
-│        <`\\_  \\         .`-.       │
-│        \ r-7  `-. ._  ' .  `\\      │
-│         \`,      `-.`7  7)   )      │
-│        \/         \|  \\'  / `-._   │
-│                      ||    .'       │
-│                       \\\\  (       │
-│                        >\\  >       │
-│                     ,.-' >.'        │
-│                     <.'_.''         │
-│                         <'          │
-│                                     │
-│  ────────────────────────────────…  │
-│                                     │
-│            JESSICA RUDD             │
-│                                     │
-│  ────────────────────────────────…  │
-│                                     │
-│      Work:  Staff Data Engineer     │
-│             Analytics Engineering   │
-│             Team @ FanDuel          │
-│    GitHub:  https://github.com/Je…  │
-│     Email:  jessica.rudd@fanduel.…  │
-│  LinkedIn:  https://www.linkedin.…  │
-│  Substack:  https://funsizedataby…  │
-│                                     │
-│      Card:  pip install             │
-│             funsize-engineer        │
-│                                     │
-╰─────────────────────────────────────╯
-```
+![Terminal output showing the funsize-engineer calling card with ASCII art dinosaur and contact information](assets/funsize_engineer_card.png)
 
 ## VII. Conclusion
 
