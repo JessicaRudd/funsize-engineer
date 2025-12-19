@@ -28,15 +28,15 @@ def main():
     ascii_art = '\n'.join(lines)
     
     # Define Colors
-    FD_BLUE = "#1493FF"
-    FD_ORANGE = "#FF9900" 
+    FD_BLUE = "#8A2BE2" # BlueViolet
+    FD_ORANGE = "#DDA0DD" # Plum
     BORDER_COLOR = FD_BLUE
-    LABEL_COLOR = "bold cyan"
+    LABEL_COLOR = "bold #DDA0DD"
     VALUE_COLOR = "white"
-    LINK_COLOR = "underline blue"
+    LINK_COLOR = "underline #8A2BE2"
 
     # 1. ASCII Art
-    art_text = Text(ascii_art, style="bold cyan", no_wrap=True, overflow='ignore')
+    art_text = Text(ascii_art, style="bold #8A2BE2", no_wrap=True, overflow='ignore')
     art_panel = Align.center(art_text)
 
     # 2. Name Banner (ASCII-like text using simple characters or just large bold text)
@@ -51,13 +51,13 @@ def main():
     
     grid.add_row("Work:", "Staff Data Engineer")
     grid.add_row("", "Analytics Engineering Team @ FanDuel")
-    grid.add_row("GitHub:", "[link=https://github.com/JessicaRudd]https://github.com/JessicaRudd[/link]")
-    grid.add_row("Email:", "[link=mailto:jessica.rudd@fanduel.com]jessica.rudd@fanduel.com[/link]")
-    grid.add_row("LinkedIn:", "[link=https://www.linkedin.com/in/jmrudd/]https://www.linkedin.com/in/jmrudd/[/link]")
-    grid.add_row("Substack:", "[link=https://funsizedatabytes.substack.com/]https://funsizedatabytes.substack.com/[/link]")
+    grid.add_row("GitHub:", f"[{LINK_COLOR}][link=https://github.com/JessicaRudd]https://github.com/JessicaRudd[/link][/{LINK_COLOR}]")
+    grid.add_row("Email:", f"[{LINK_COLOR}][link=mailto:jessica.rudd@fanduel.com]jessica.rudd@fanduel.com[/link][/{LINK_COLOR}]")
+    grid.add_row("LinkedIn:", f"[{LINK_COLOR}][link=https://www.linkedin.com/in/jmrudd/]https://www.linkedin.com/in/jmrudd/[/link][/{LINK_COLOR}]")
+    grid.add_row("Substack:", f"[{LINK_COLOR}][link=https://funsizedatabytes.substack.com/]https://funsizedatabytes.substack.com/[/link][/{LINK_COLOR}]")
     
     grid.add_row() # Spacer
-    grid.add_row("Card:", Text("pip install funsize-engineer", style=FD_ORANGE))
+    grid.add_row("Card:", Text("pip install funsize-engineer", style="bold white"))
 
     # Assemble Content
     content = Table.grid(padding=(1, 1))
@@ -75,7 +75,7 @@ def main():
             content,
             border_style=BORDER_COLOR,
             padding=(1, 2),
-            width=108, # Width set to accommodate 100-char ASCII art + padding
+            width=100, # Width set to accommodate ASCII art + padding
             box=ROUNDED
         )
     )
